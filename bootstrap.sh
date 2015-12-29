@@ -40,10 +40,12 @@ sleep 5
 
 export DISPLAY=localhost:1
 
-if [ "x${USENOVNC}" == "xTRUE" ]; then
-    mv /home/${CUSER}/docs/self_unsigned.pem /home/${CUSER}/noVNC/utils/self.pem
-    /home/${CUSER}/noVNC/utils/launch.sh --vnc 127.0.0.1:5901 &
-fi
+##
+# Invoke noVNC
+##
+cd /home/${CUSER}/noVNC/utils && openssl req -new -x509 -days 365 -nodes -out self.pem -keyout self.pem -batch
+/home/${CUSER}/noVNC/utils/launch.sh --vnc 127.0.0.1:5901 &
+
 
 if [ -f /home/${CUSER}/start.sh ]; then
     /home/${CUSER}/start.sh
