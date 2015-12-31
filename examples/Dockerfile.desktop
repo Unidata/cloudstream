@@ -1,0 +1,100 @@
+#####
+# Used to generate the 'wardf/desktop' docker container.
+# This is accessed either via a VNC client or a web browser,
+# thanks to 'noVNC'.
+#####
+
+#####
+# Common stuff at front.
+#####
+
+FROM unidata/cloudstream
+MAINTAINER Ward Fisher <ward.fisher@gmail.com>
+
+#####
+# Install packages and update the system.
+#####
+
+###
+# Install developer tools, utilities, vnc/novnc, ssh, other stuff.
+###
+RUN sudo apt-get install -y man nano curl git emacs wget gcc g++ gfortran clang gdb autoconf automake make libtool m4 bison flex zlib1g-dev libjpeg-dev libcurl4-openssl-dev x11vnc xvfb xinit lxde wmctrl python firefox openssh-server doxygen graphviz zip valgrind kcachegrind gitstats cmake install htop meld
+
+#####
+# Switch over to non-root user,
+# configure system and environment.
+#####
+USER ${CUSER}
+ENV HOME /home/${CUSER}
+WORKDIR /home/${CUSER}
+
+#################
+# This is an example of overriding the
+# default window manager used by
+# unidata/cloudidv
+#################
+
+###
+# Create the .xinitrc file.
+# This will be invoked when xinit is called from the initial
+# command script.
+###
+
+RUN mkdir -p ~/.vnc
+RUN echo '  /usr/bin/x11vnc -display :1 -autoport 5901 -repeat -forever &' > ~/.xinitrc.nopassword
+RUN echo '/usr/bin/startlxde' >> ~/.xinitrc.nopassword
+
+RUN echo '  /usr/bin/x11vnc -display :1 -autoport 5901 -repeat -forever -usepw &' > ~/.xinitrc.password
+RUN echo '/usr/bin/startlxde' >> ~/.xinitrc.password
+
+
+#####
+# Initialize environmental variables, expose
+# ports, etc.
+#####
+EXPOSE 22
+EXPOSE 5901
+EXPOSE 6080
+
+#############
+# Override default windows session geometry and color depth.
+#############
+ENV SIZEW 1600
+ENV SIZEH 1000
+ENV CDEPTH 24
+
+#####
+# Copy over scripts, configuration files, readme, etc.
+#####
+
+###
+# Make some directories.
+###
+RUN mkdir -p /home/${CUSER}/local/bin
+RUN mkdir -p /home/${CUSER}/docs
+
+###
+# Copy over files.
+###
+COPY README.md /home/${CUSER}/docs/
+COPY Dockerfile.desktop /home/${CUSER}/docs/
+
+COPY config/xscreensaver /home/${CUSER}/
+RUN mv /home/${CUSER}/xscreensaver /home/${CUSER}/.xscreensaver
+
+
+###
+# Cleanup
+###
+RUN chown -R ${CUSER} /home/${CUSER}/
+RUN apt-get -y clean
+RUN apt-get -y autoclean
+RUN apt-get -y purge
+
+#####
+# Kick off the session as the following user.
+#
+# Because there's no default program, we
+# don't have to copy over a start.sh file.
+#####
+USER ${CUSER}
