@@ -23,6 +23,12 @@ if [ "x${HELP}" != "x" ]; then
     exit
 fi
 
+
+###
+# Remove .x11 lock just in case there is one.
+###
+sudo rm -rf /tmp/.X1-lock
+
 ###
 # Set up vnc to use a password if USEPASS is non-empty.
 ###
