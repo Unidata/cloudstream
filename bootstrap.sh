@@ -23,6 +23,14 @@ if [ "x${HELP}" != "x" ]; then
     exit
 fi
 
+###
+# Print out the version file.
+###
+if [ "x${VERSION}" != "x" ]; then
+    cat VERSION.md
+    exit
+fi
+
 
 ###
 # Remove .x11 lock just in case there is one.

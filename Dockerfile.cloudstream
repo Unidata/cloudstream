@@ -9,6 +9,7 @@
 
 FROM ubuntu:trusty
 MAINTAINER Ward Fisher <wfisher@ucar.edu>
+ENV VERSION development
 
 #####
 # Update base docker image.
@@ -99,8 +100,11 @@ COPY bootstrap.sh ${HOME}/
 COPY Dockerfile.cloudstream ${HOME}/
 COPY Dockerfile.template ${HOME}/
 COPY README.md ${HOME}/
-COPY start.sh ${HOME}/
-RUN mv start.sh start.sh.template
+
+###
+# Create a version file.
+###
+RUN echo "CloudStream Version: $VERSION\t$(date)" > VERSION.md
 
 ###
 # Run the bootstrap.sh script.
