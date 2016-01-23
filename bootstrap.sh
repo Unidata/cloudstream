@@ -28,6 +28,7 @@ fi
 ###
 if [ "x${VERSION}" != "x" ]; then
     cat VERSION.md
+    echo ""
     exit
 fi
 

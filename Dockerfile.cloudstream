@@ -103,9 +103,9 @@ COPY README.md ${HOME}/
 ###
 # Create a version file.
 ###
-ENV VERSION 1.0 Beta - development
+ENV CLOUDSTREAM_VERSION 1.0 Beta - development
 ENV VERSION_FILE VERSION.md
-RUN echo "CloudStream Version: \"$VERSION\"\t$(date)" > $VERSION_FILE
+RUN echo "CloudStream Version: \"$CLOUDSTREAM_VERSION\"\t$(date)" > $VERSION_FILE
 
 ###
 # Run the bootstrap.sh script.
