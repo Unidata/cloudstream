@@ -17,9 +17,33 @@ trap "echo TRAPed signal" HUP INT QUIT KILL TERM
 ###
 # If HELP environmental variable is non-empty,
 # cat the README file and exit.
+#
+# Start with checking for the CLOUDSTREAM readme, which is default.
+# Then, assuming it will be named README[.md/.txt], cat other
+# README file which might have been copied in. Finally, print
+# out the version file.
+#
 ###
 if [ "x${HELP}" != "x" ]; then
-    cat README.md
+
+    if [ -e "/home/${CUSER}/CLOUDSTREAM_README.md" ]; then
+        cat "/home/${CUSER}/CLOUDSTREAM_README.md"
+    fi
+    echo ""
+
+    if [ -e "/home/${CUSER}/README.md" ]; then
+        cat "/home/${CUSER}/README.md"
+    elif [ -e "/home/${CUSER}/README" ]; then
+        cat "/home/${CUSER}/README"
+    elif [ -e "/home/${CUSER}/README.txt" ]; then
+        cat "/home/${CUSER}/README.txt"
+    fi
+    echo ""
+
+    if [ "/home/${CUSER}/VERSION.md" ]; then
+        cat "/home/${CUSER}/VERSION.md"
+    fi
+
     exit
 fi
 

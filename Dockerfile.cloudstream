@@ -100,6 +100,7 @@ COPY bootstrap.sh ${HOME}/
 COPY Dockerfile.cloudstream ${HOME}/
 COPY Dockerfile.template ${HOME}/
 COPY README.md ${HOME}/
+RUN  mv README.md CLOUDSTREAM_README.md
 COPY RELEASE_NOTES.md ${HOME}/
 
 ###
