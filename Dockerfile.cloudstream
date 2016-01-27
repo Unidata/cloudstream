@@ -3,13 +3,13 @@
 # Used to generate the 'unidata/cloudstream' docker container.
 # Visit us on the web at http://www.unidata.ucar.edu
 #
-# Copyright Unidata 2015
+# Copyright Unidata 2015 - 2016
 #
 #####
 
 FROM ubuntu:trusty
 MAINTAINER Ward Fisher <wfisher@ucar.edu>
-ENV CLOUDSTREAM_VERSION 1.0 Beta - development
+ENV CLOUDSTREAM_VERSION 1.0.0 - development
 
 #####
 # Update base docker image.
@@ -32,7 +32,9 @@ ENV CUSERPWORD "password.1234"
 
 RUN useradd -ms /bin/bash ${CUSER}
 RUN adduser ${CUSER} sudo
-RUN echo "${CUSER}:${CUSERPWORD}" | chpasswd
+# There is no need for the password to be known, so
+# randomize it for now.
+RUN echo "${CUSER}:${CUSERPWORD}${RANDOM} " | chpasswd
 RUN echo "${CUSER} ALL=NOPASSWD: ALL" >> /etc/sudoers
 
 #####

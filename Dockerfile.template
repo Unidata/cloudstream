@@ -1,0 +1,118 @@
+#####
+# This is a template docker configuration file (dockerfile) provided
+# by Unidata in support of the Unidata CloudStream docker container.
+# It is intended to illustrate how to easily build a project on top
+# of Unidata's Application-Streaming technology stack.  To use this
+# template, you will make a copy to your project and change those
+# variables which need changing according to the following documentation.
+# You would then use `Docker` to build your application streaming project
+# as follows:
+#
+#   $ docker build -t [desired tag name] -f [Dockerfile.template name] .
+#
+# Once built, you would run it as follows:
+#
+#   $ docker run -it -p 6080:6080 [tag name]
+#
+# The application will then be available via a browser at the
+# IP address of the machine from which it was invoked, on port 6080, e.g.:
+#
+#   http://[IP address]:6080
+#
+# For detailed usage guidelines, please see the project documentation at:
+#
+#  * https://github.com/Unidata/cloudstream
+#
+# Copyright Unidata 2015 - 2016
+#####
+
+
+#!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+# The following variables must be left as they are for the system to work
+# properly, please do not change them. They are related to the underlying
+# Ubuntu linux image upon which `unidata/cloudstream` is based.
+#!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
+
+# Specify that this image inherits from the `unidata/cloudstream` image.
+FROM unidata/cloudstream
+
+# Tell Docker that we will be working as `root`.  Note that we can switch back to the
+# default user specified by `${CUSER}` where need be. This value is inherited from
+# `unidata/cloudstream`.
+USER root
+
+# Tell the Ubuntu package manager that we are running in a non-interactive mode.
+ENV DEBIAN_FRONTEND noninteractive
+
+# Update the package manager information and update any installed packages.
+RUN apt-get update && apt-get -y upgrade
+
+#!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+# End non-user-configurable options.
+#!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
+###############################################################################
+# Begin user-configurable options.
+###############################################################################
+
+
+
+MAINTAINER FirstName LastName <email.address@domain.name>
+
+####
+# APPLICATION_VERSION - Version of the application.
+#
+# If you intend to build a versioned docker image, you can set
+# this variable to the desired version.  When running your image,
+# you may then pass it a non-empty VERSION variable and the version
+# of both your application and the underlying unidata/cloudstream image will be printed.
+#
+# Syntax:
+#   ENV APPLICATION_VERSION [desired version]
+#
+####
+
+#  ENV APPLICATION_VERSION 1.0.0
+
+####
+# Package management
+#
+# unidata/cloudstream uses a Ubuntu-based environment.  Ubuntu linux uses the
+# `apt-get` tool for managing packages from the official repositories.  If
+# there are specific utilities or programs or libraries which must be installed
+# for your package to work, install them here
+#
+# Example:
+#    RUN apt-get install -y libcurl4-openssl-dev wget emacs
+
+# RUN apt-get install -y [space-delimited list of package names]
+
+####
+# Display Options
+#
+# CloudStream uses a VNC remote desktop server, coupled with the VNC/Websockets
+# interface `noVNC`, to provide visualization via a web browser.  When a
+# unidata/cloudstream-derived image runs, it uses the following default
+# environmental variables to define the screen properties:
+#
+# - SIZEW: Width of display, default 1024
+# - SIZEH: Height of display, default 768
+# - CDEPTH: Color depth of display, default 24
+#
+# These defaults may be overridden here.  They may also be modified at runtime by
+# passing these values as environmental variables at runtime.
+####
+
+# ENV SIZEW 1024
+# ENV SIZEH 768
+# ENV CDEPTH 24
+
+
+
+
+
+
+###############################################################################
+# Begin user-configurable options.
+###############################################################################
