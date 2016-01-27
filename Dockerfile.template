@@ -131,6 +131,20 @@ USER ${CUSER}
 # ENV CDEPTH 24
 
 ####
+# Custom Environmental Variables
+#
+# If your program or project depends on specific environmental variables,
+# you can set default values below, similar to how `SIZEW`, `SIZEH` and
+# `CDEPTH` are specified above.  These default values can be overridden
+# at runtime.
+#
+# Syntax:
+#    ENV [Variable Name] [Variable Value]
+####
+
+# ENV [Variable Name] [Variable Value]
+
+####
 # Custom Bash Init Script
 #
 # By default, unidata/cloudidv and derivatives run a script when the image is
@@ -180,12 +194,32 @@ USER ${CUSER}
 # COPY README.md ${HOME}/
 
 ####
-# Further Docker Image customization
+# Advanced Docker Image customization
 #
 # The application streaming image can be highly customized using standard
 # Docker functionality.  The following space is a good place to add any custom
 # functionality which is not captured in this template.
+#
+# Examples of advanced usage include:
+#
+# * Compiling a program manually for use by the image.
+# * Manipulating the filesystem and/or filesystem contents.
+# * Checking the values of particular options and performing actions based on
+#   their value.
+# * Change the default window manager.
+# * Override other default properties of the `unidata/cloudstream` image.
+#
+# See the files in the `examples/` directory for more examples of advanced
+# usage.
+####
 
+
+
+
+
+####
+# End Advanced Docker Image customization
+####
 
 ###############################################################################
 # End user-configurable options.
