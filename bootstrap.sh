@@ -61,6 +61,13 @@ export DISPLAY=localhost:1
 cd /home/${CUSER}/noVNC/utils && openssl req -new -x509 -days 365 -nodes -out self.pem -keyout self.pem -batch
 /home/${CUSER}/noVNC/utils/launch.sh --vnc 127.0.0.1:5901 &
 
+echo ""
+echo ""
+echo "================================"
+cat VERSION.md
+echo "================================"
+echo ""
+echo ""
 
 if [ -f /home/${CUSER}/start.sh ]; then
     /home/${CUSER}/start.sh
