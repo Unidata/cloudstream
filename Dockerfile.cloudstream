@@ -99,6 +99,7 @@ COPY bootstrap.sh ${HOME}/
 COPY Dockerfile.cloudstream ${HOME}/
 COPY Dockerfile.template ${HOME}/
 COPY README.md ${HOME}/
+COPY RELEASE_NOTES.md ${HOME}/
 
 ###
 # Create a version file.
