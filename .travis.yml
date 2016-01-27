@@ -1,0 +1,12 @@
+sudo: required
+
+language: ruby
+
+services:
+  - docker
+
+before_install:
+  - docker pull ubuntu:trusty > /dev/null
+
+script:
+  - docker build -t test -f Dockerfile.cloudstream .

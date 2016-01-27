@@ -9,6 +9,7 @@
 
 FROM ubuntu:trusty
 MAINTAINER Ward Fisher <wfisher@ucar.edu>
+ENV CLOUDSTREAM_VERSION 1.0 Beta - development
 
 #####
 # Update base docker image.
@@ -99,11 +100,11 @@ COPY bootstrap.sh ${HOME}/
 COPY Dockerfile.cloudstream ${HOME}/
 COPY Dockerfile.template ${HOME}/
 COPY README.md ${HOME}/
+COPY RELEASE_NOTES.md ${HOME}/
 
 ###
 # Create a version file.
 ###
-ENV CLOUDSTREAM_VERSION 1.0 Beta - development
 ENV VERSION_FILE VERSION.md
 RUN echo "CloudStream Version: \"$CLOUDSTREAM_VERSION\"\t$(date)" > $VERSION_FILE
 
