@@ -240,7 +240,7 @@ USER ${CUSER}
 # It is safe to leave it alone.
 ####
 
-RUN echo "${APPLICATION_NAME} Version: \"${APPLICATION_VERSION\"\t$(date)" >> $VERSION_FILE
+RUN echo "${APPLICATION_NAME} Version: \"${APPLICATION_VERSION}\"\t$(date)" >> $VERSION_FILE
 
 #!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 # End File
