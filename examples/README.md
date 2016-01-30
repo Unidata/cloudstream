@@ -1,5 +1,6 @@
 # Examples
 
-This directory contains various examples for using the `CloudStream` framework.  See the corresponding `Dockerfile.[example]` for details on each example case.
+This directory contains various examples for using the `CloudStream` framework.  See the corresponding `Dockerfile.[example]` in each directory for details on each example case.
 
-1. A generic linux desktop environment - `Dockerfile.desktop`
+* `Linux Desktop/` - An example of using `unidata/cloudstream` to build a generic linux desktop, while overriding the default geometry and linux desktop manager.
+* `CloudIDV/` - This example shows how to build a remote-accessible instance of the Unidata Integrated Data Viewer (IDV)
