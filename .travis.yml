@@ -9,4 +9,6 @@ before_install:
   - docker pull ubuntu:trusty > /dev/null
 
 script:
-  - docker build -t test -f Dockerfile.cloudstream .
+  - docker build -t unidata/cloudstream -f Dockerfile.cloudstream .
+  - docker build -t example/desktop -f examples/Linux\ Desktop/Dockerfile.desktop .
+  - docker build -t example/cloudidv -f examples/CloudIDV/Dockerfile.cloudidv .
