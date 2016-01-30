@@ -12,6 +12,7 @@ Table of contents
     * [Display Options](#displayoptions)
 * [Using CloudStream](#usage)
 * [Using Cloudstream for custom software](#custom)
+* [Other Resources](#refs)
 * [Examples](#examples)
 
 Introduction <A NAME="introduction"></A>
@@ -68,7 +69,7 @@ CDEPTH | The color depth of the display provided by CloudStream. `Default: 24`
 
 > You will notice in all of our examples, we consistently pass the `-it` option to Docker. This tells Docker to run as an `interactive shell`, and is required for `unidata/cloudstream` to work properly.
 
-In addition to the CloudStream options, you will need to expose port `6080` via standard Docker options `-p` or `-P`.  The `-p` option allows you to specify a specific port mapping, e.g. `-p 6081:6080` would result in a running docker image accessible on port `6081`.  The `-P` option specifies a dynamic port mapping, where Docker will find an available port.  You would then need to use `docker ps` to determine what port was selected.  This would work as follows:
+In addition to the CloudStream options outlined above, you will need to expose port `6080` using the Docker flags `-p` or `-P`.  The `-p` option allows you to specify a specific port mapping, e.g. `-p 6081:6080` would result in a running docker image accessible on port `6081`.  The `-P` option specifies a dynamic port mapping, where Docker will find an available port.  You would then need to use `docker ps` to determine what port was selected.  This would work as follows:
 
     $ docker run -it -P  unidata/cloudstream
     $ docker ps
@@ -84,6 +85,15 @@ Usage <A NAME="usage"></A>
 
 Using CloudStream for custom software <A NAME="custom"></A>
 -------------------------------------
+
+
+Other Resources <A NAME="refs">
+---------------
+
+For more information on Docker syntax and using CloudStream as a basis for other application-streaming applications, see the following resources:
+
+* Unidata CloudIDV:  [https://github.com/Unidata/cloudidv](https://github.com/Unidata/cloudidv)
+* Dockerfile Syntax: [https://docs.docker.com/engine/reference/builder/](https://docs.docker.com/engine/reference/builder)
 
 Examples <A NAME="examples"></A>
 --------
