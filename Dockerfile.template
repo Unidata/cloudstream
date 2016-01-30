@@ -99,6 +99,15 @@ MAINTAINER FirstName LastName <email.address@domain.name>
 
 # RUN apt-get install -y [space-delimited list of package names]
 
+###
+# NOTE: If you intend to build your own application from source, you will
+# *at minimum* require the Ubuntu development tools as listed below.
+# You will also need to install any other libraries or utilities your program
+# will need to be compiled.
+###
+
+# RUN apt-get install -y ubuntu-dev-tools libtool autoconf automake
+
 ####
 # Revert to non-root admin user.
 #
