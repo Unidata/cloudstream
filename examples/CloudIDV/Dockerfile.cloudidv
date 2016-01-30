@@ -68,7 +68,7 @@ MAINTAINER FirstName LastName <email.address@domain.name>
 #    ENV APPLICATION_NAME [application name]
 ####
 
-# ENV APPLICATION_NAME [application name]
+ENV APPLICATION_NAME ExampleCloudIDV
 
 ####
 # APPLICATION_VERSION - Version of the application.
@@ -83,7 +83,7 @@ MAINTAINER FirstName LastName <email.address@domain.name>
 #
 ####
 
-# ENV APPLICATION_VERSION [desired version]
+ENV APPLICATION_VERSION DEMO1.0.0
 
 ####
 # Package management
@@ -222,9 +222,21 @@ USER ${CUSER}
 # usage.
 ####
 
+###
+# Download IDV
+###
+RUN curl -SL \
+  http://motherlode.ucar.edu/repository/entry/get/RAMADDA/IDV%20Community%20Resources/IDV%20Docker/IDV.tar.bz2?entryid=18e6168c-d715-4c41-8bbb-d202481c9559 \
+  -o ~/IDV.tar.bz2
 
+RUN tar xvfj ~/IDV.tar.bz2
 
-
+###
+# Add the default Unidata bundle.
+###
+COPY start.sh ${WORKDIR}
+COPY Dockerfile.cloudidv ${WORKDIR}
+COPY README.md ${WORKDIR}
 
 ####
 # End Advanced Docker Image customization
