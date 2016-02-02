@@ -1,6 +1,8 @@
 CloudStream
 ===========
 
+* [Travis-CI Dashboard](https://travis-ci.org/Unidata/cloudstream):  <IMG SRC="https://travis-ci.org/Unidata/cloudstream.svg?branch=master"/>
+
 Table of contents
 -----------------
 
