@@ -9,28 +9,25 @@ Table of contents
 * [Introduction](#introduction)
 * [Requirements](#requirements)
 * [Building CloudStream](#building)
+* [Building CloudStream-enabled Software](#custom)
 * [Using CloudStream](#usage)
-* [Using Cloudstream for custom software](#custom)
 * [CloudStream Runtime Options](#options)
 * [CloudStream Option Syntax](#syntax)
 * [Other Resources](#refs)
-* [Examples](#examples)
 
 Introduction <A NAME="introduction"></A>
 ------------
 
-***CloudStream*** is a Docker-based framework/container for Application Streaming. Application Streaming describes the process by which software is run on a remote server but is accessed on a device as though it were running locally.  By default, CloudStream provides a Linux Desktop environment, which is then accessible through a standard web browser.  This is all highly customizable; examples of extending CloudStream may be viewed in the `examples/` directory.
+***CloudStream*** is a Docker-based framework/container for *Application Streaming*. ***Application Streaming*** describes the process by which software is run on a remote server but is accessed on a device as though it were running locally.  The CloudStream framework provides an environment pre-built to provide remote application access via a web browser.  All that is required to use CloudStream is include your own Linux software!
 
-Requirements <A NAME="requirements"></A>
-------------
+
+### Requirements <A NAME="requirements"></A>
+
 
 CloudStream is a **Docker** image, which other images may be built on.  As a result, using CloudStream requires a local Docker installation.  Instructions for installing Docker may be found [here](https://docs.docker.com/).
 
-CloudStream assumes some familiarity with Docker configuration files.  An annotated Docker configuration template, `Dockerfile.template`, may be found as part of the CloudStream project.  It is also directly viewable [here](https://github.com/Unidata/cloudstream/blob/master/Dockerfile.template).  This template is designed to serve as a starting point for building your own Docker image.
-
 Building CloudStream <A NAME="building"></A>
 --------------------
-
 
 Typically, you will want to use the version of CloudStream hosted at DockerHub; this instance is maintained by Unidata, and will typically be the latest version.  However, if you are interested in building a copy of CloudStream yourself, it is very straight forward.  From the root CloudStream directory, you will issue the following Docker command:
 
@@ -38,21 +35,29 @@ Typically, you will want to use the version of CloudStream hosted at DockerHub; 
 
 > Note: Any image you want to inherit from this version of CloudStream must inherit from `[custom tag]`.  See [usage](#usage) for more details on building a custom image which inherits from CloudStream.
 
+Building CloudStream-enabled Software <A NAME="custom"></A>
+-------------------------------------
+
+CloudStream provides the technology stack required for an application-streaming framework.  This includes a virtual desktop environment which can be accessed via a web browser.  The workflow for CloudStream is as follows:
+
+~~~~
+CloudStream + Custom Software = New Docker Image
+~~~~
+
+In this workflow, the new Docker image inherits the CloudStream technology stack and options.  It also contains any custom software or configuration provided by the user.  The end result is a new Docker image containing everything required to run legacy linux software via a browser as though it were running locally.
+
+### Docker configuration files
+
+Docker images are built using configuration files referred to as a `Dockerfile`.  Examples of various types of Dockerfiles may be found in the `examples/` directory, and a robust Dockerfile template is also included in the project.  An annotated Docker configuration template, `Dockerfile.template`, may be found as part of the CloudStream project.  It is also directly viewable [here](https://github.com/Unidata/cloudstream/blob/master/Dockerfile.template).  This template is designed to serve as a starting point for building your own Docker image.
+
+The Docker organization also provides documentation for building and configuring your own Dockerfile.  This documentation may be found [at their website](https://docs.docker.com/engine/reference/builder/).
+
 Usage<A NAME="usage"></A>
 -----
 
-CloudStream assumes some familiarity with Docker configuration files.  An annotated Docker configuration template, `Dockerfile.template`, may be found as part of the CloudStream project.  It is also directly viewable [here](https://github.com/Unidata/cloudstream/blob/master/Dockerfile.template).  This template is designed to serve as a starting point for building your own Docker image.
-
-
-Using CloudStream for custom software <A NAME="custom"></A>
--------------------------------------
-
-Runtime Options <A NAME="options"></A>
----------------
-
 **CloudStream** has several options built-in, enumerated below.  These options are inherited by any CloudStream-based Docker images, although these options may be removed or have their default values changed by a developer.  Additionally, it is easy for a developer to add additional options for use in their CloudStream-based image. The variables and their syntax are described below.
 
-### Options
+###Options
 
 Below are the options available for use with `unidata/cloudstream`.  They are organized into three groups, `Information Options`, `Security Options` and `Display Options`.
 
@@ -112,8 +117,6 @@ Other Resources <A NAME="refs">
 
 For more information on Docker syntax and using CloudStream as a basis for other application-streaming applications, see the following resources:
 
-* Unidata CloudIDV:  [https://github.com/Unidata/cloudidv](https://github.com/Unidata/cloudidv)
+* Unidata CloudStream project page: [https://github.com/Unidata/cloudstrea/](https://github.com/Unidata/cloudstream)
+* Unidata CloudIDV project page:  [https://github.com/Unidata/cloudidv/](https://github.com/Unidata/cloudidv)
 * Dockerfile Syntax: [https://docs.docker.com/engine/reference/builder/](https://docs.docker.com/engine/reference/builder)
-
-Examples <A NAME="examples"></A>
---------
