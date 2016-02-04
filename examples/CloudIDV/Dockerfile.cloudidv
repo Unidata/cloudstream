@@ -234,9 +234,9 @@ RUN tar xvfj ~/IDV.tar.bz2
 ###
 # Add the default Unidata bundle.
 ###
-COPY start.sh ${WORKDIR}/
-COPY Dockerfile.cloudidv ${WORKDIR}/
-COPY README.md ${WORKDIR}/
+COPY start.sh ${HOME}/
+COPY Dockerfile.cloudidv ${HOME}/
+COPY README.md ${HOME}/
 
 ####
 # End Advanced Docker Image customization
