@@ -78,7 +78,7 @@ ENV APPLICATION_VERSION DEMO1.0.0
 ####
 
 # RUN apt-get install -y [space-delimited list of package names]
-RUN apt-get install -y firefox
+RUN apt-get install -y firefox xdotool
 
 ###
 # NOTE: If you intend to build your own application from source, you will
@@ -208,9 +208,9 @@ USER ${CUSER}
 ###
 # Add the default Unidata bundle.
 ###
-COPY start.sh ${WORKDIR}/
-COPY Dockerfile.firefox ${WORKDIR}/
-COPY README.md ${WORKDIR}/
+COPY start.sh ${HOME}/
+COPY Dockerfile.firefox ${HOME}/
+COPY README.md ${HOME}/
 
 ####
 # End Advanced Docker Image customization
