@@ -117,6 +117,6 @@ Other Resources <A NAME="refs">
 
 For more information on Docker syntax and using CloudStream as a basis for other application-streaming applications, see the following resources:
 
-* Unidata CloudStream project page: [https://github.com/Unidata/cloudstrea/](https://github.com/Unidata/cloudstream)
+* Unidata CloudStream project page: [https://github.com/Unidata/cloudstream/](https://github.com/Unidata/cloudstream)
 * Unidata CloudIDV project page:  [https://github.com/Unidata/cloudidv/](https://github.com/Unidata/cloudidv)
 * Dockerfile Syntax: [https://docs.docker.com/engine/reference/builder/](https://docs.docker.com/engine/reference/builder)
