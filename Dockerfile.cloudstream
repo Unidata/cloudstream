@@ -9,7 +9,7 @@
 
 FROM ubuntu:trusty
 MAINTAINER Ward Fisher <wfisher@ucar.edu>
-ENV CLOUDSTREAM_VERSION 1.0.0 - development
+ENV CLOUDSTREAM_VERSION 1.1.0 - development
 
 #####
 # Update base docker image.
@@ -21,7 +21,7 @@ RUN apt-get update && apt-get -y upgrade
 ###
 # Install bare minimum set of tools.
 ###
-RUN apt-get install -y nano curl x11vnc xvfb xinit fluxbox git python
+RUN apt-get install -y nano curl x11vnc xvfb xinit fluxbox git python autocutsel glipper
 
 ###
 # Set up a non-root user account.
@@ -59,11 +59,20 @@ RUN echo '/usr/bin/x11vnc -usepw -display :1 -autoport $APORT -repeat -forever &
 RUN echo "/usr/bin/startfluxbox" >> ~/.xinitrc.nopassword
 RUN echo "/usr/bin/startfluxbox" >> ~/.xinitrc.password
 
+##
+# Enable cut and paste.
+# See: https://github.com/kanaka/noVNC/wiki/Fixing-the-clipboard-under-linux
+##
+RUN echo "autocutsel -s PRIMARY -fork" >> ~/xinitrc.nopassword
+RUN echo "autocutsel -s PRIMARY -fork" >> ~/xinitrc.password
+
 ###
 # Configure fluxbox.
 ###
 RUN mkdir ~/.fluxbox/
 RUN bash -c 'echo "xterm &" >> ~/.fluxbox/startup'
+RUN bash -c 'echo "python /usr/lib/glipper/glipper -w &" >> ~/.fluxbox/startup'
+RUN bash -c 'echo  "autocutsel -s PRIMARY -fork" >> ~/.fluxbox/startup'
 RUN echo "/usr/bin/fluxbox -log ~/.fluxbox/log" >> ~/.fluxbox/startup
 
 #####
@@ -78,6 +87,7 @@ ENV APORT 5901
 ENV WPORT 6080
 
 EXPOSE ${WPORT}
+EXPOSE ${APORT}
 
 RUN git clone git://github.com/kanaka/noVNC
 RUN ln -s /home/${CUSER}/noVNC/vnc_auto.html /home/${CUSER}/noVNC/index.html
