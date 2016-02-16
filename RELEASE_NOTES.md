@@ -8,6 +8,10 @@ See the project GitHub and DockerHub pages for more information:
 * [https://github.com/Unidata/cloudstream](https://github.com/Unidata/cloudstream)
 * [https://hub.docker.com/r/unidata/cloudstream/](https://hub.docker.com/r/unidata/cloudstream)
 
+## 1.1.0 - TBD
+
+* Added a `COPYRIGHT` file to the project.
+
 ## 1.0.0 - February 5, 2016
 
 * Added documentation in the form of `README.md`.
