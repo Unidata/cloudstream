@@ -8,7 +8,6 @@ Table of contents
 
 * [Introduction](#introduction)
 * [Requirements](#requirements)
-* [Building CloudStream](#building)
 * [Building CloudStream-enabled Software](#custom)
 * [Using CloudStream](#usage)
 * [CloudStream Runtime Options](#options)
@@ -26,31 +25,35 @@ Introduction <A NAME="introduction"></A>
 
 CloudStream is a **Docker** image, which other images may be built on.  As a result, using CloudStream requires a local Docker installation.  Instructions for installing Docker may be found [here](https://docs.docker.com/).
 
-Building CloudStream <A NAME="building"></A>
---------------------
-
-Typically, you will want to use the version of CloudStream hosted at DockerHub; this instance is maintained by Unidata, and will typically be the latest version.  However, if you are interested in building a copy of CloudStream yourself, it is very straight forward.  From the root CloudStream directory, you will issue the following Docker command:
-
-    $ docker build -t [custom tag] -f Dockerfile.cloudstream .
-
-> Note: Any image you want to inherit from this version of CloudStream must inherit from `[custom tag]`.  See [usage](#usage) for more details on building a custom image which inherits from CloudStream.
-
 Building CloudStream-enabled Software <A NAME="custom"></A>
 -------------------------------------
 
-CloudStream provides the technology stack required for an application-streaming framework.  This includes a virtual desktop environment which can be accessed via a web browser.  The workflow for CloudStream is as follows:
+> All you need to build a CloudStream-enabled Docker image is a custom Docker configuration file, called a `Dockerfile`.  This section describes Dockerfiles in general, and how to construct a Dockerfile which uses CloudStream.
 
-~~~~
-CloudStream + Custom Software = New Docker Image
-~~~~
+CloudStream provides the technology stack required for an application-streaming-enabled environment.  This includes a virtual desktop environment which can be accessed via a web browser.  Using CloudStream is as simple as defining a new project which *inherits* from the CloudStream Docker image, `unidata/cloudstream`. This allows a project to inherit the application-streaming technology stack and default CloudStream options.  
 
-In this workflow, the new Docker image inherits the CloudStream technology stack and options.  It also contains any custom software or configuration provided by the user.  The end result is a new Docker image containing everything required to run legacy linux software via a browser as though it were running locally.
+How do you define a project which inherits from `unidata/cloudstream`? With a custom **Docker configuration file**.
 
 ### Docker configuration files
 
 Docker images are built using configuration files referred to as a `Dockerfile`.  Examples of various types of Dockerfiles may be found in the `examples/` directory, and a robust Dockerfile template is also included in the project.  An annotated Docker configuration template, `Dockerfile.template`, may be found as part of the CloudStream project.  It is also directly viewable [here](https://github.com/Unidata/cloudstream/blob/master/Dockerfile.template).  This template is designed to serve as a starting point for building your own Docker image.
 
 The Docker organization also provides documentation for building and configuring your own Dockerfile.  This documentation may be found [at their website](https://docs.docker.com/engine/reference/builder/).
+
+### Building your own Docker image
+
+Once a custom Dockerfile has been configured, building your project is as simple as:
+
+    $ docker build -t [your project name] -f [your Dockerfile] .
+
+To run this custom Docker image, you would run the following from the command line:
+
+    $ docker run -it -p 6080:6080 [your project name]
+
+Your Docker image would then be viewable by entering the following address in a web browser:
+
+    [IP address of the machine running the image]:6080
+
 
 Usage<A NAME="usage"></A>
 -----
