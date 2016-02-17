@@ -9,7 +9,7 @@
 
 FROM ubuntu:trusty
 MAINTAINER Ward Fisher <wfisher@ucar.edu>
-ENV CLOUDSTREAM_VERSION 1.1.0
+ENV CLOUDSTREAM_VERSION 1.2.0 - development
 
 #####
 # Update base docker image.
