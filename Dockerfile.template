@@ -33,7 +33,7 @@
 #!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
 # Specify that this image inherits from the `unidata/cloudstream` image.
-FROM unidata/cloudstream
+FROM unidata/cloudstream:1.1.0
 
 # Tell Docker that we will be working as `root`.  Note that we can switch back to the
 # default user specified by `${CUSER}` where need be. This value is inherited from
