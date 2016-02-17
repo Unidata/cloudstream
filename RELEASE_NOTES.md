@@ -10,6 +10,8 @@ See the project GitHub and DockerHub pages for more information:
 
 ## 1.2.0 - TBD
 
+* Added a quickstart guide, `QUICKSTART.md`, for users already familiar with Docker.
+
 ## 1.1.0 - February 17, 2016
 
 * Added a `COPYRIGHT` file to the project.

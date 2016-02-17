@@ -54,8 +54,6 @@ RUN apt-get update && apt-get -y upgrade
 # Begin user-configurable options.
 ###############################################################################
 
-
-
 MAINTAINER FirstName LastName <email.address@domain.name>
 
 ####
@@ -154,29 +152,24 @@ USER ${CUSER}
 # ENV [Variable Name] [Variable Value]
 
 ####
-# Custom Bash Init Script
+# Advanced Docker Image customization
 #
-# By default, unidata/cloudidv and derivatives run a script when the image is
-# invoked, `bootstrap.sh`.  `bootstrap.sh` is responsible for setting various
-# underlying environmental variables and running the VNC server.  It also
-# performs some actions depending on the environmental variables specified
-# at runtime.
+# The application streaming image can be highly customized using standard
+# Docker functionality.  The following space is a good place to add any custom
+# functionality which is not captured in this template.
 #
-# If the file `start.sh` exists in the Docker image, `bootstrap.sh` will run
-# this shell script once the environment has been configured.
+# Examples of advanced usage include:
 #
-# Example uses for `start.sh` include automatically running a specific program,
-# checking out a project from a subversion or git repository, or anything else
-# which can normally be achieved via a bash shell script.
+# * Compiling a program manually for use by the image.
+# * Manipulating the filesystem and/or filesystem contents.
+# * Checking the values of particular options and performing actions based on
+#   their value.
+# * Change the default window manager.
+# * Override other default properties of the `unidata/cloudstream` image.
 #
-# In order to work, `start.sh` must be copied to the default directory ${HOME},
-# which maps to /home/${CUSER}/.
-#
-# If no `start.sh` is present, your application will automatically run a
-# standard X11 desktop session using the `fluxbox` windows manager.
+# See the files in the `examples/` directory for more examples of advanced
+# usage.
 ####
-
-# COPY start.sh ${HOME}/
 
 ####
 # Application README file
@@ -203,28 +196,29 @@ USER ${CUSER}
 # COPY README.md ${HOME}/
 
 ####
-# Advanced Docker Image customization
+# Custom Bash Init Script
 #
-# The application streaming image can be highly customized using standard
-# Docker functionality.  The following space is a good place to add any custom
-# functionality which is not captured in this template.
+# By default, unidata/cloudidv and derivatives run a script when the image is
+# invoked, `bootstrap.sh`.  `bootstrap.sh` is responsible for setting various
+# underlying environmental variables and running the VNC server.  It also
+# performs some actions depending on the environmental variables specified
+# at runtime.
 #
-# Examples of advanced usage include:
+# If the file `start.sh` exists in the Docker image, `bootstrap.sh` will run
+# this shell script once the environment has been configured.
 #
-# * Compiling a program manually for use by the image.
-# * Manipulating the filesystem and/or filesystem contents.
-# * Checking the values of particular options and performing actions based on
-#   their value.
-# * Change the default window manager.
-# * Override other default properties of the `unidata/cloudstream` image.
+# Example uses for `start.sh` include automatically running a specific program,
+# checking out a project from a subversion or git repository, or anything else
+# which can normally be achieved via a bash shell script.
 #
-# See the files in the `examples/` directory for more examples of advanced
-# usage.
+# In order to work, `start.sh` must be copied to the default directory ${HOME},
+# which maps to /home/${CUSER}/.
+#
+# If no `start.sh` is present, your application will automatically run a
+# standard X11 desktop session using the `fluxbox` windows manager.
 ####
 
-
-
-
+# COPY start.sh ${HOME}/
 
 ####
 # End Advanced Docker Image customization

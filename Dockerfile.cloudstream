@@ -103,8 +103,9 @@ COPY Dockerfile.cloudstream ${HOME}/
 COPY Dockerfile.template ${HOME}/
 COPY README.md ${HOME}/
 COPY COPYRIGHT ${HOME}/
-RUN  mv README.md CLOUDSTREAM_README.md
 COPY RELEASE_NOTES.md ${HOME}/
+COPY QUICKSTART.md ${HOME}/
+RUN  mv README.md CLOUDSTREAM_README.md
 ADD examples ${HOME}/examples
 
 ###
