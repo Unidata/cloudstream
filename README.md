@@ -17,6 +17,10 @@ Table of contents
 Introduction <A NAME="introduction"></A>
 ------------
 
+<CENTER>
+<IMG SRC="http://www.unidata.ucar.edu/blog_content/images/2016/20160216_cloudstream_desktop.png" WIDTH=600/>
+</CENTER>
+
 ***CloudStream*** is a Docker-based framework/container for *Application Streaming*. ***Application Streaming*** describes the process by which software is run on a remote server but is accessed on a device as though it were running locally.  The CloudStream framework provides an environment pre-built to provide remote application access via a web browser.  All that is required to use CloudStream is include your own Linux software!
 
 
