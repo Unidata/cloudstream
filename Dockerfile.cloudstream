@@ -9,7 +9,7 @@
 
 FROM ubuntu:trusty
 MAINTAINER Ward Fisher <wfisher@ucar.edu>
-ENV CLOUDSTREAM_VERSION development
+ARG CLOUDSTREAM_VERSION development
 
 #####
 # Update base docker image.
