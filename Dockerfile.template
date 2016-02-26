@@ -1,4 +1,6 @@
 #####
+# Copyright Unidata 2016 All Rights Reserved
+#
 # This is a template docker configuration file (dockerfile) provided
 # by Unidata in support of the Unidata CloudStream docker container.
 # It is intended to illustrate how to easily build a project on top

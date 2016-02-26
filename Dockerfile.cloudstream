@@ -9,7 +9,7 @@
 
 FROM ubuntu:trusty
 MAINTAINER Ward Fisher <wfisher@ucar.edu>
-ENV CLOUDSTREAM_VERSION 1.2.0 - development
+ENV CLOUDSTREAM_VERSION development
 
 #####
 # Update base docker image.
@@ -102,7 +102,7 @@ COPY bootstrap.sh ${HOME}/
 COPY Dockerfile.cloudstream ${HOME}/
 COPY Dockerfile.template ${HOME}/
 COPY README.md ${HOME}/
-COPY COPYRIGHT ${HOME}/
+COPY COPYRIGHT_CLOUDSTREAM.md ${HOME}/
 COPY RELEASE_NOTES.md ${HOME}/
 COPY QUICKSTART.md ${HOME}/
 RUN  mv README.md CLOUDSTREAM_README.md
