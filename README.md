@@ -72,8 +72,9 @@ Below are the options available for use with `unidata/cloudstream`.  They are or
 
 Option | Note
 -------|------
-HELP   | Displays the CloudStream help file, plus any custom `README`, `README.txt` or `README.md` file copied over by a dependent image.
+HELP   | Displays the CloudStream help file, plus any custom `README` information defined in a dependent package using the `README_FILE` environmental variable.
 VERSION | Displays the CloudStream version, plus any custom version specified by a dependent image.  See `Dockerfile.template` for the syntax used to specify this.
+COPYRIGHT | Displays the CloudStream copyright, plus any custom `COPYRIGHT` information defined in a dependent package using the `COPYRIGHT_FILE` environmental variable.
 
 #### Security Options <A NAME="secoptions"></A>
 Option | Note

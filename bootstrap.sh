@@ -1,5 +1,7 @@
 #!/bin/bash
 ##########
+# Copyright Unidata 2016 All Rights Reserved
+#
 # This script is part of the unidata/cloudstream Docker image.
 #
 # It sets up a VNC session accessible via a webbrowser using noVNC and
@@ -31,12 +33,8 @@ if [ "x${HELP}" != "x" ]; then
     fi
     echo ""
 
-    if [ -e "/home/${CUSER}/README.md" ]; then
-        cat "/home/${CUSER}/README.md"
-    elif [ -e "/home/${CUSER}/README" ]; then
-        cat "/home/${CUSER}/README"
-    elif [ -e "/home/${CUSER}/README.txt" ]; then
-        cat "/home/${CUSER}/README.txt"
+    if [ -e "$README_FILE" ]; then
+      cat "$README_FILE"
     fi
     echo ""
 
@@ -45,6 +43,21 @@ if [ "x${HELP}" != "x" ]; then
     fi
 
     exit
+fi
+
+
+if [ "x${COPYRIGHT}" != "x" ]; then
+  if [ -e "/home/${CUSER}/COPYRIGHT_CLOUDSTREAM.md" ]; then
+    cat "/home/${CUSER}/COPYRIGHT_CLOUDSTREAM.md"
+  fi
+  echo ""
+
+  if [ -e "${COPYRIGHT_FILE}" ]; then
+    cat "${COPYRIGHT_FILE}"
+  fi
+
+  exit
+
 fi
 
 ###
