@@ -56,6 +56,8 @@ if [ "x${COPYRIGHT}" != "x" ]; then
     cat "${COPYRIGHT_FILE}"
   fi
 
+  exit
+
 fi
 
 ###
