@@ -10,6 +10,7 @@ See the project GitHub and DockerHub pages for more information:
 
 ## 1.2.0 - TBD
 
+* Changed the default window manager from `fluxbox` to `LXDE`.  Updated the `Linux Desktop` example to reflect overriding `LXDE` to switch window manager back to `fluxbox`.
 * Added a quickstart guide, `QUICKSTART.md`, for users already familiar with Docker.
 
 ## 1.1.0 - February 17, 2016

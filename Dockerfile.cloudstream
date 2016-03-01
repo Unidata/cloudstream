@@ -21,7 +21,7 @@ RUN apt-get update && apt-get -y upgrade
 ###
 # Install bare minimum set of tools.
 ###
-RUN apt-get install -y nano curl x11vnc xvfb xinit fluxbox git python
+RUN apt-get install -y nano curl x11vnc xvfb xinit lxde git python
 
 ###
 # Set up a non-root user account.
@@ -56,15 +56,8 @@ RUN mkdir ~/.vnc
 RUN echo '/usr/bin/x11vnc -display :1 -autoport $APORT -repeat -forever &' > ~/.xinitrc.nopassword
 RUN echo '/usr/bin/x11vnc -usepw -display :1 -autoport $APORT -repeat -forever &' > ~/.xinitrc.password
 
-RUN echo "/usr/bin/startfluxbox" >> ~/.xinitrc.nopassword
-RUN echo "/usr/bin/startfluxbox" >> ~/.xinitrc.password
-
-###
-# Configure fluxbox.
-###
-RUN mkdir ~/.fluxbox/
-RUN bash -c 'echo "xterm &" >> ~/.fluxbox/startup'
-RUN echo "/usr/bin/fluxbox -log ~/.fluxbox/log" >> ~/.fluxbox/startup
+RUN echo "/usr/bin/startlxde" >> ~/.xinitrc.nopassword
+RUN echo "/usr/bin/startlxde" >> ~/.xinitrc.password
 
 #####
 # Set up Websocket-based VNC.

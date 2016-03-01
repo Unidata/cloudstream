@@ -80,7 +80,7 @@ ENV APPLICATION_VERSION 1.0.0
 #    RUN apt-get install -y libcurl4-openssl-dev wget emacs git nano
 ####
 
-RUN apt-get install -y lxde
+RUN apt-get install -y fluxbox
 
 ####
 # Revert to non-root admin user.
@@ -130,7 +130,7 @@ USER ${CUSER}
 ####
 # Custom Bash Init Script
 #
-# By default, unidata/cloudidv and derivatives run a script when the image is
+# By default, unidata/cloudstream and derivatives run a script when the image is
 # invoked, `bootstrap.sh`.  `bootstrap.sh` is responsible for setting various
 # underlying environmental variables and running the VNC server.  It also
 # performs some actions depending on the environmental variables specified
@@ -204,10 +204,19 @@ USER ${CUSER}
 
 RUN mkdir -p ~/.vnc
 RUN echo '  /usr/bin/x11vnc -display :1 -autoport 5901 -repeat -forever &' > ~/.xinitrc.nopassword
-RUN echo '/usr/bin/startlxde' >> ~/.xinitrc.nopassword
 
 RUN echo '  /usr/bin/x11vnc -display :1 -autoport 5901 -repeat -forever -usepw &' > ~/.xinitrc.password
-RUN echo '/usr/bin/startlxde' >> ~/.xinitrc.password
+
+RUN echo '/usr/bin/startfluxbox' >> ~/.xinitrc.nopassword
+RUN echo '/usr/bin/startfluxbox' >> ~/.xinitrc.password
+
+###
+# Configure fluxbox.
+###
+RUN mkdir ~/.fluxbox/
+RUN bash -c 'echo "xterm &" >> ~/.fluxbox/startup'
+RUN echo "/usr/bin/fluxbox -log ~/.fluxbox/log" >> ~/.fluxbox/startup
+
 
 ###
 # Override default windows session geometry and color depth.

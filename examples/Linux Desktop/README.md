@@ -1,6 +1,6 @@
 # Linux Desktop Example
 
-This example shows how to use `unidata/cloudstream` to generate a linux desktop environment which may be accessed via a web browser.  This example overrides the default screen geometry and replaces the default windows manager with the `LXDE` manager.
+This example shows how to use `unidata/cloudstream` to generate a linux desktop environment which may be accessed via a web browser.  This example overrides the default screen geometry and replaces the default windows manager `LXDE` with the `fluxbox` desktop windows manager.
 
 ## Building the example
 
