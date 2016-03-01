@@ -21,7 +21,7 @@ RUN apt-get update && apt-get -y upgrade
 ###
 # Install bare minimum set of tools.
 ###
-RUN apt-get install -y nano curl x11vnc xvfb xinit fluxbox git python
+RUN apt-get install -y nano curl x11vnc xvfb xinit ratpoison ratmenu xcb xclip xbindkeys unclutter screen git python wget
 
 ###
 # Set up a non-root user account.
@@ -56,15 +56,19 @@ RUN mkdir ~/.vnc
 RUN echo '/usr/bin/x11vnc -display :1 -autoport $APORT -repeat -forever &' > ~/.xinitrc.nopassword
 RUN echo '/usr/bin/x11vnc -usepw -display :1 -autoport $APORT -repeat -forever &' > ~/.xinitrc.password
 
-RUN echo "/usr/bin/startfluxbox" >> ~/.xinitrc.nopassword
-RUN echo "/usr/bin/startfluxbox" >> ~/.xinitrc.password
+RUN echo '/usr/bin/ratpoison ' >> ~/.xinitrc.nopassword
+RUN echo '/usr/bin/ratpoison ' >> ~/.xinitrc.password
 
 ###
-# Configure fluxbox.
+# Set up ratpoison with a custom configuration.
 ###
-RUN mkdir ~/.fluxbox/
-RUN bash -c 'echo "xterm &" >> ~/.fluxbox/startup'
-RUN echo "/usr/bin/fluxbox -log ~/.fluxbox/log" >> ~/.fluxbox/startup
+
+RUN wget http://danielwebb.us/software/ratpoison/ratpoison_configured_0.1.tar.gz && tar -zxf ratpoison_configured_0.1.tar.gz
+RUN cd .ratpoison && ./install.sh
+
+###
+# End Ratpoison configuration.
+###
 
 #####
 # Set up Websocket-based VNC.
