@@ -79,7 +79,8 @@ ENV WPORT 6080
 
 EXPOSE ${WPORT}
 
-RUN git clone git://github.com/kanaka/noVNC
+#RUN git clone git://github.com/kanaka/noVNC
+RUN git clone git://github.com/WardF/noVNC
 RUN ln -s /home/${CUSER}/noVNC/vnc_auto.html /home/${CUSER}/noVNC/index.html
 RUN cd /home/${CUSER}/noVNC/utils && git clone https://github.com/kanaka/websockify
 
