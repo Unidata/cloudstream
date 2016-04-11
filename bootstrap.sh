@@ -69,6 +69,13 @@ if [ "x${VERSION}" != "x" ]; then
     exit
 fi
 
+###
+# Determine if we're using SSL Only.
+###
+SSLOP=""
+if [ "x${SSLONLY}" == "xTRUE" ]; then
+    SSLOP="--ssl-only"
+fi
 
 ###
 # Remove .x11 lock just in case there is one.
@@ -97,7 +104,7 @@ export DISPLAY=localhost:1
 ##
 cd /home/${CUSER}/noVNC/utils && openssl req -new -x509 -days 365 -nodes -out self.pem -keyout self.pem -batch
 cd ~
-/home/${CUSER}/noVNC/utils/launch.sh --vnc 127.0.0.1:5901 &
+/home/${CUSER}/noVNC/utils/launch.sh ${SSLOP} --vnc 127.0.0.1:5901 &
 
 echo ""
 echo ""
