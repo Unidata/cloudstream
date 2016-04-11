@@ -80,6 +80,7 @@ COPYRIGHT | Displays the CloudStream copyright, plus any custom `COPYRIGHT` info
 Option | Note
 -------|-----
 USEPASS | Specifies a password to be used for the session.  `Default: no password`.
+SSLONLY | Disable unencrypted http-based connections.  Off by default. Set to `TRUE` to enable.
 
 #### Display Options <A NAME="displayoptions"></A>
 
