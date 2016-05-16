@@ -1,29 +1,40 @@
-#!/usr/bin/python
+#!/usr/bin/python3
 
-import Tkinter
-import tkMessageBox
+import tkinter
+from tkinter import messagebox
+
 import subprocess
 
-top = Tkinter.Tk()
+top = tkinter.Tk()
+
+def quit(event):
+        print("Quit event caught")
+        top.quit()
+
+def tst2():
+        stdoutdata = subprocess.getoutput("ls")
+        messagebox.showinfo("Outpout",stdoutdata.split()[0])
 
 def tst():
-	p = subprocess.Popen("ls", shell=True, stdout=subprocess.PIPE, stderr=subprocess.STDOUT)
-	stdout = []
-	while True:
-		line = p.stdout.readline()
-		stdout.append(line)
-		print line,
-		if line == '' and p.poll() != None:
-			break
-	tkMessageBox.showinfo("Contents",''.join(stdout))
-	
-def configDB():
-	tkMessageBox.showinfo("Hello Python", "Hello WOrld")
+        p = subprocess.Popen("echo hi", shell=True, stdout=subprocess.PIPE, stderr=subprocess.STDOUT)
+        stdout = []
+        while True:
+                line = p.stdout.readline()
+                stdout.append(line)
+                print(line),
+                if line == '' and p.poll() != None:
+                   break
 
-B = Tkinter.Button(top, text="Hello", command = configDB)
-C = Tkinter.Button(top, text="cmd", command = tst)
+        messagebox.showinfo("Contents",''.join(stdout))
+
+def configDB():
+        messagebox.showinfo("Hello Python", "Hello World")
+
+B = tkinter.Button(top, text="Hello", command = configDB)
+C = tkinter.Button(top, text="cmd", command = tst2)
 
 B.pack()
 C.pack()
 
+top.bind('<Control-c>', quit)
 top.mainloop()
