@@ -21,7 +21,7 @@ RUN apt-get update && apt-get -y upgrade
 ###
 # Install bare minimum set of tools.
 ###
-RUN apt-get install -y nano curl x11vnc xvfb xinit fluxbox git python
+RUN apt-get install -y nano curl x11vnc xvfb xinit fluxbox git python zip
 
 ###
 # Set up a non-root user account.
@@ -88,6 +88,14 @@ RUN git clone git://github.com/WardF/noVNC
 RUN ln -s /home/${CUSER}/noVNC/vnc_auto.html /home/${CUSER}/noVNC/index.html
 RUN cd /home/${CUSER}/noVNC/utils && git clone https://github.com/kanaka/websockify
 
+
+###
+# Install rclone from prebuilt binary.
+###
+USER root
+RUN curl -o rclone.zip http://downloads.rclone.org/rclone-current-linux-amd64.zip && unzip -j -d /usr/bin rclone.zip
+USER ${CUSER}
+
 ###
 # We can parameterize screen dimensions
 # with the following variables.
@@ -110,14 +118,25 @@ COPY README.md ${HOME}/
 COPY COPYRIGHT_CLOUDSTREAM.md ${HOME}/
 COPY RELEASE_NOTES.md ${HOME}/
 COPY QUICKSTART.md ${HOME}/
+COPY rclone.conf.template ${HOME}/.rclone.conf
+
 RUN  mv README.md CLOUDSTREAM_README.md
 ADD examples ${HOME}/examples
+COPY rclone-gui.py ${HOME}/Desktop/
 
 ###
 # Create a version file.
 ###
 ENV VERSION_FILE VERSION.md
 RUN echo "CloudStream Version: \"$CLOUDSTREAM_VERSION\"\t$(date)" > $VERSION_FILE
+
+###
+# A little housekeeping.
+###
+
+USER root
+RUN chown -R ${CUSER}:${CUSER} ${HOME}
+USER ${CUSER}
 
 ###
 # Run the bootstrap.sh script.
