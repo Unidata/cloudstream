@@ -25,6 +25,6 @@ child.sendline('')
 child.expect('https://.*response_type=code')
 
 subprocess.run(["/usr/bin/firefox", child.after])
-child.expect('Enter the code: ')
+#child.expect('Enter the code: ')
 
 child.interact()
