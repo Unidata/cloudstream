@@ -6,29 +6,33 @@ from tkinter import Button
 import subprocess
 
 class MainApplication(tk.Frame):
-        def __init__(self, parent, *args, **kwargs):
-                tk.Frame.__init__(self, parent, *args, **kwargs)
-                parent.minsize(width=150,height=100)
-                self.parent = parent
-                # Create GUI here
-                self.B = Button(self, text="Hello", command = self.configDB)
-                self.C = Button(self, text="cmd", command = self.tst2)
+    def __init__(self, parent, *args, **kwargs):
+        tk.Frame.__init__(self, parent, *args, **kwargs)
+        parent.minsize(width=250,height=100)
+        self.parent = parent
+        # Create GUI here
+        self.btn_auth = Button(self, text="Authenticate", command = self.configDB)
+        self.btn_import = Button(self, text="Import", command = self.tst2)
+        self.btn_export = Button(self, text="Export")
+        self.btn_quit = Button(self,text="Quit")
 
-                self.B.pack(side="top",fill="x",expand=True)
-                self.C.pack(side="top",fill="x",expand=True)
+        self.btn_auth.pack(side="top",fill="both",padx=10,expand=True)
+        self.btn_import.pack(side="top",fill="both",padx=10,expand=True)
+        self.btn_export.pack(side="top",fill="both",padx=10,expand=True)
+        self.btn_quit.pack(side="bottom",fill="both",padx=10,expand=True)
+        
+        parent.bind('<Control-c>', self.quit_proc)
 
-                parent.bind('<Control-c>', self.quit_proc)
+    def configDB(self):
+        messagebox.showinfo("Hello Python", "Hello World")
 
-        def configDB(self):
-                messagebox.showinfo("Hello Python", "Hello World")
+    def quit_proc(self):
+        print("Quit event caught")
+        quit()
 
-        def quit_proc(self):
-                print("Quit event caught")
-                quit()
-
-        def tst2(self):
-                stdoutdata = subprocess.getoutput("ls")
-                messagebox.showinfo("Outpout",stdoutdata.split()[0])
+    def tst2(self):
+        stdoutdata = subprocess.getoutput("ls")
+        messagebox.showinfo("Outpout",stdoutdata.split()[0])
 
 
 
