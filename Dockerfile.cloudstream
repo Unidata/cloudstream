@@ -21,7 +21,7 @@ RUN apt-get update && apt-get -y upgrade
 ###
 # Install bare minimum set of tools.
 ###
-RUN apt-get install -y nano curl x11vnc xvfb xinit fluxbox git python zip xdg-utils
+RUN apt-get install -y nano curl x11vnc xvfb xinit fluxbox git python zip xdg-utils epiphany
 
 ###
 # Set up a non-root user account.
@@ -121,7 +121,7 @@ COPY QUICKSTART.md ${HOME}/
 
 RUN  mv README.md CLOUDSTREAM_README.md
 ADD examples ${HOME}/examples
-COPY rclone-gui.py ${HOME}/Desktop/
+COPY rclone-gui.py ${HOME}/
 
 ###
 # Create a version file.

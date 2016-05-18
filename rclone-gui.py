@@ -50,7 +50,7 @@ class MainApplication(tk.Frame):
 
         child.expect('https://.*response_type=code')
 
-        subprocess.run(["/usr/bin/firefox", child.after])
+        subprocess.run(["/usr/bin/xdg-open", child.after])
 
         mykey = sdg.askstring("Key", "Key provided by dropbox.",initialvalue=self.clipboard_get())
 
