@@ -1,6 +1,9 @@
 #!/usr/bin/python3
 
+import os
 import tkinter as tk
+import signal
+
 from tkinter import messagebox
 from tkinter import Button
 from tkinter import simpledialog as sdg
@@ -18,7 +21,7 @@ class MainApplication(tk.Frame):
         self.btn_auth = Button(self, text="Authenticate", command = self.configDB)
         self.btn_import = Button(self, text="Import", command = self.importFiles)
         self.btn_export = Button(self, text="Export", command = self.exportFiles)
-        self.btn_quit = Button(self,text="Quit", command=quit())
+        self.btn_quit = Button(self,text="Quit", command=quit)
 
         self.btn_auth.pack(side="top",fill="both",padx=10,expand=True)
         self.btn_import.pack(side="top",fill="both",padx=10,expand=True)
@@ -46,15 +49,24 @@ class MainApplication(tk.Frame):
         child.expect('app_secret> ')
         child.sendline('')
 
-
+        ## Optional, only if there exists a config file already.
+        try:
+            child.expect('y/n> ',timeout=1)
+            child.sendline('y')
+        except pexpect.TIMEOUT:
+            pass
 
         child.expect('https://.*response_type=code')
 
-        subprocess.run(["/usr/bin/midori", child.after])
+        mbrowser = subprocess.Popen(["/usr/bin/midori", child.after], preexec_fn=os.setsid)
 
-        mykey = sdg.askstring("Key", "Key provided by dropbox.",initialvalue=self.clipboard_get())
+        mlines = ['Please sign in to your dropbox account', 'to allow rcopy to import/export data.', '', 'Your credentials are not read or stored by this process.', 'Once authenticated, copy and paste (ctrl-c, ctrl-v) the key', 'provided by dropbox into this dialog.', '']
+        mykey = sdg.askstring("Key", "\n".join(mlines))
 
         child.expect('Enter the code: ')
+
+        ## Kill the browser.
+        os.killpg(os.getpgid(mbrowser.pid), signal.SIGTERM)
         #print("Using key: " + mykey)
         child.sendline(mykey)
 
@@ -65,6 +77,8 @@ class MainApplication(tk.Frame):
         child.sendline('q')
 
         child.close()
+        messagebox.showinfo("Authentication","Authentication Successful.")
+
 
     def quit_proc(self):
         print("Quit event caught")
