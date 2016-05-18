@@ -21,7 +21,7 @@ RUN apt-get update && apt-get -y upgrade
 ###
 # Install bare minimum set of tools.
 ###
-RUN apt-get install -y nano curl x11vnc xvfb xinit fluxbox git python zip xdg-utils epiphany
+RUN apt-get install -y nano curl x11vnc xvfb xinit fluxbox git python zip xdg-utils midori
 
 ###
 # Set up a non-root user account.

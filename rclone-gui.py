@@ -16,9 +16,9 @@ class MainApplication(tk.Frame):
         self.parent = parent
         # Create GUI here
         self.btn_auth = Button(self, text="Authenticate", command = self.configDB)
-        self.btn_import = Button(self, text="Import", command = self.import)
-        self.btn_export = Button(self, text="Export", command = self.export)
-        self.btn_quit = Button(self,text="Quit")
+        self.btn_import = Button(self, text="Import", command = self.importFiles)
+        self.btn_export = Button(self, text="Export", command = self.exportFiles)
+        self.btn_quit = Button(self,text="Quit", command=quit())
 
         self.btn_auth.pack(side="top",fill="both",padx=10,expand=True)
         self.btn_import.pack(side="top",fill="both",padx=10,expand=True)
@@ -50,7 +50,7 @@ class MainApplication(tk.Frame):
 
         child.expect('https://.*response_type=code')
 
-        subprocess.run(["/usr/bin/xdg-open", child.after])
+        subprocess.run(["/usr/bin/midori", child.after])
 
         mykey = sdg.askstring("Key", "Key provided by dropbox.",initialvalue=self.clipboard_get())
 
@@ -72,10 +72,13 @@ class MainApplication(tk.Frame):
 
     def tst2(self):
         stdoutdata = subprocess.getoutput("ls")
-        messagebox.showinfo("Outpout",stdoutdata.split()[0])
+        messagebox.showinfo("Output",stdoutdata.split()[0])
 
+    def importFiles(self):
+        messagebox.showinfo("Info","Not yet implemented")
 
-
+    def exportFiles(self):
+        messagebox.showinfo("Info","Not yet implemented")
 
 
 if __name__ == "__main__":
