@@ -118,7 +118,6 @@ COPY README.md ${HOME}/
 COPY COPYRIGHT_CLOUDSTREAM.md ${HOME}/
 COPY RELEASE_NOTES.md ${HOME}/
 COPY QUICKSTART.md ${HOME}/
-COPY rclone.conf.template ${HOME}/.rclone.conf
 
 RUN  mv README.md CLOUDSTREAM_README.md
 ADD examples ${HOME}/examples
