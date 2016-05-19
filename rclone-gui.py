@@ -126,7 +126,7 @@ class MainApplication(tk.Frame):
         messagebox.showinfo("Import","Files imported from dropbox:unidata_sync/IDV")
 
     def exportFiles(self):
-        if os.path.exists("~/.unidata"):
+        if os.path.exists(os.path.expanduser("~/.unidata")):
             mexport = subprocess.call("/usr/bin/rclone copy ~/.unidata dropbox:unidata_sync/idv",shell=True)
             messagebox.showinfo("Export","Files exported to dropbox:unidata_sync/IDV")
         else:
