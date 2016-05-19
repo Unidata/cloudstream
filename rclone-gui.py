@@ -118,11 +118,11 @@ class MainApplication(tk.Frame):
         messagebox.showinfo("Output",stdoutdata.split()[0])
 
     def importFiles(self):
-        messagebox.showinfo("Info","Not yet implemented")
+
 
     def exportFiles(self):
-        messagebox.showinfo("Info","Not yet implemented")
-
+        mexport = subprocess.call("/usr/bin/rclone copy ~/.unidata dropbox:unidata_sync/IDV",shell=True)
+        messagebox.showinfo("Export","Files exported to dropbox:unidata_sync/IDV")
 
 if __name__ == "__main__":
         root = tk.Tk()
