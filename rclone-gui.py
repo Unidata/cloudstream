@@ -12,6 +12,53 @@ import subprocess
 import sys
 import pexpect
 
+class KeySimpleDialog(sdg.Dialog):
+
+    def body(self, master):
+        self.keylbl = Label(master, text="Key").grid(row=0)
+
+        self.grabbtn = Button(master, text="Grab Key from clipboard", command = self.grabKey)
+
+
+    def grabKey(self, master):
+
+
+    def apply(self):
+        self.result = self.keylbl
+
+
+
+class KeyDialog(TopLevel):
+    def __init(self, parent, title = None):
+        Toplevel.__init__(self,parent)
+        self.transient(parent)
+
+        if title:
+            self.title(title)
+
+        self.parent = parent
+
+        body = Frame(self)
+        self.initial_focus = self.body(body)
+
+        self.buttonbox()
+
+    def body(self, master):
+
+    def buttonbox(self):
+
+    def ok(self, event=None):
+
+    def cancel(self,event=None):
+
+    def validate(self):
+
+        return 1
+
+    def apply(self):
+
+        pass
+
 class MainApplication(tk.Frame):
     def __init__(self, parent, *args, **kwargs):
         tk.Frame.__init__(self, parent, *args, **kwargs)
@@ -61,8 +108,9 @@ class MainApplication(tk.Frame):
         mbrowser = subprocess.Popen(["/usr/bin/firefox", child.after], preexec_fn=os.setsid)
 
         mlines = ['Please sign in to your dropbox account', 'to allow rcopy to import/export data.', '', 'Your credentials are not read or stored by this process.', 'Once authenticated, copy and paste (ctrl-c, ctrl-v) the key', 'provided by dropbox into this dialog.', '']
-        mykey = sdg.askstring("Key", "\n".join(mlines))
-
+        ##mykey = sdg.askstring("Key", "\n".join(mlines))
+        d = KeySimpleDialog(root)
+        mykey = d.result
         child.expect('Enter the code: ')
 
         ## Kill the browser.
