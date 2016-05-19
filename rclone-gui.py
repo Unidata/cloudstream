@@ -21,43 +21,11 @@ class KeySimpleDialog(sdg.Dialog):
 
 
     def grabKey(self, master):
-
+        pass
 
     def apply(self):
         self.result = self.keylbl
 
-
-
-class KeyDialog(TopLevel):
-    def __init(self, parent, title = None):
-        Toplevel.__init__(self,parent)
-        self.transient(parent)
-
-        if title:
-            self.title(title)
-
-        self.parent = parent
-
-        body = Frame(self)
-        self.initial_focus = self.body(body)
-
-        self.buttonbox()
-
-    def body(self, master):
-
-    def buttonbox(self):
-
-    def ok(self, event=None):
-
-    def cancel(self,event=None):
-
-    def validate(self):
-
-        return 1
-
-    def apply(self):
-
-        pass
 
 class MainApplication(tk.Frame):
     def __init__(self, parent, *args, **kwargs):
