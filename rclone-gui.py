@@ -118,16 +118,16 @@ class MainApplication(tk.Frame):
         messagebox.showinfo("Output",stdoutdata.split()[0])
 
     def importFiles(self):
-        if not os.path.exists("~/.unidata"):
+        if not os.path.exists(os.path.expanduser('~/.unidata')):
             print("Creating target directory ~/.unidata")
-            os.makedirs("~/.unidata")
+            os.makedirs(os.path.expanduser('~/.unidata'))
 
-        mimport = subprocess.call("/usr/bin/rclone copy ~/.unidata dropbox:unidata_sync/IDV",shell=True)
+        mimport = subprocess.call("/usr/bin/rclone copy dropbox:unidata_sync/idv ~/.unidata",shell=True)
         messagebox.showinfo("Import","Files imported from dropbox:unidata_sync/IDV")
 
     def exportFiles(self):
         if os.path.exists("~/.unidata"):
-            mexport = subprocess.call("/usr/bin/rclone copy ~/.unidata dropbox:unidata_sync/IDV",shell=True)
+            mexport = subprocess.call("/usr/bin/rclone copy ~/.unidata dropbox:unidata_sync/idv",shell=True)
             messagebox.showinfo("Export","Files exported to dropbox:unidata_sync/IDV")
         else:
             messagebox.showinfo("Export","No files found in ~/.unidata to export.")
