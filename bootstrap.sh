@@ -114,12 +114,6 @@ echo "================================"
 echo ""
 echo ""
 
-if [ "x$USERCLONE" != "x" ]; then
-    if [ -f /home/${CUSER}/rclone-gui.py ]; then
-        /home/${CUSER}/rclone-gui.py
-    fi
-fi
-
 if [ -f /home/${CUSER}/start.sh ]; then
     /home/${CUSER}/start.sh
 fi
