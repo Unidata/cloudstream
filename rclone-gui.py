@@ -118,7 +118,8 @@ class MainApplication(tk.Frame):
         messagebox.showinfo("Output",stdoutdata.split()[0])
 
     def importFiles(self):
-
+        mimport = subprocess.call("/usr/bin/rclone copy ~/.unidata dropbox:unidata_sync/IDV",shell=True)
+        messagebox.showinfo("Import","Files imported from dropbox:unidata_sync/IDV")
 
     def exportFiles(self):
         mexport = subprocess.call("/usr/bin/rclone copy ~/.unidata dropbox:unidata_sync/IDV",shell=True)
