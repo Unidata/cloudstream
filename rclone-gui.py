@@ -122,7 +122,7 @@ class MainApplication(tk.Frame):
             print("Creating target directory ~/.unidata")
             os.makedirs(os.path.expanduser('~/.unidata'))
 
-        mimport = subprocess.call("/usr/bin/rclone copy dropbox:unidata_sync/idv ~/.unidata",shell=True)
+        mimport = subprocess.call("/usr/bin/rclone --stats 0m5s copy dropbox:unidata_sync/idv ~/.unidata",shell=True)
         messagebox.showinfo("Import","Files imported from dropbox:unidata_sync/IDV")
 
     def exportFiles(self):
