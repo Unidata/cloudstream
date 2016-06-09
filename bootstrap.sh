@@ -94,6 +94,12 @@ else
     x11vnc -storepasswd "${USEPASS}" /home/${CUSER}/.vnc/passwd
 fi
 
+if [ "x$SHARED" == "x" ]; then
+    export SHARESTRING="-noshared"
+else
+    export SHARESTRING="-shared"
+fi
+
 xinit -- /usr/bin/Xvfb :1 -screen 0 $SIZEW\x$SIZEH\x$CDEPTH &
 sleep 5
 
