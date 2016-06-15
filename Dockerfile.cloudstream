@@ -126,7 +126,6 @@ COPY QUICKSTART.md ${HOME}/
 
 RUN  mv README.md CLOUDSTREAM_README.md
 ADD examples ${HOME}/examples
-COPY rclone-gui.py ${HOME}/
 
 ###
 # Create a version file.
