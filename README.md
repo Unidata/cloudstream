@@ -81,6 +81,7 @@ Option | Note
 -------|-----
 USEPASS | Specifies a password to be used for the session.  `Default: no password`.
 SSLONLY | Disable unencrypted http-based connections.  Off by default. Set to `TRUE` to enable.
+SHARED | Allow for multiple, concurrent connections.  Off by default. Set to `TRUE` to enable.
 
 #### Display Options <A NAME="displayoptions"></A>
 

@@ -94,9 +94,9 @@ else
     x11vnc -storepasswd "${USEPASS}" /home/${CUSER}/.vnc/passwd
 fi
 
-if [ "x$SHARED" == "x" ]; then
-    export SHARESTRING="-noshared"
-else
+export SHARESTRING="-noshared"
+
+if [ "x${SHARED}" == "xTRUE" ]; then
     export SHARESTRING="-shared"
 fi
 
