@@ -7,7 +7,7 @@
 #
 #####
 
-FROM ubuntu:trusty
+FROM ubuntu:xenial
 MAINTAINER Ward Fisher <wfisher@ucar.edu>
 ENV CLOUDSTREAM_VERSION development
 
@@ -21,7 +21,10 @@ RUN apt-get update && apt-get -y upgrade
 ###
 # Install bare minimum set of tools.
 ###
-RUN apt-get install -y nano curl x11vnc xvfb xinit git python zip xdg-utils firefox python3-tk python3-pexpect fluxbox
+ENV install_packages x11vnc xvfb xinit git python zip xdg-utils firefox python3-tk python3-pexpect fluxbox bzip2 curl
+
+RUN apt-get install -y -d ${install_packages}
+RUN apt-get install -y ${install_packages}
 
 ###
 # Set up a non-root user account.
