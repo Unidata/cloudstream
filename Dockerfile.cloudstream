@@ -7,7 +7,7 @@
 #
 #####
 
-FROM ubuntu:trusty
+FROM resin/rpi-raspbian
 MAINTAINER Ward Fisher <wfisher@ucar.edu>
 ENV CLOUDSTREAM_VERSION development
 
@@ -21,8 +21,8 @@ RUN apt-get update && apt-get -y upgrade
 ###
 # Install bare minimum set of tools.
 ###
-RUN apt-get install -y nano curl x11vnc xvfb xinit git python zip xdg-utils firefox python3-tk python3-pexpect fluxbox
-
+RUN apt-get install -y nano curl x11vnc xvfb xinit git python zip xdg-utils python3-tk python3-pexpect fluxbox
+RUN apt-get install -y unzip net-tools
 ###
 # Set up a non-root user account.
 ###
