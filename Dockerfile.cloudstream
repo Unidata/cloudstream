@@ -21,10 +21,8 @@ RUN apt-get update && apt-get -y upgrade
 ###
 # Install bare minimum set of tools.
 ###
-ENV install_packages x11vnc xvfb xinit git python zip xdg-utils firefox python3-tk python3-pexpect fluxbox bzip2 curl
 
-RUN apt-get install -y -d ${install_packages}
-RUN apt-get install -y ${install_packages}
+RUN apt-get install -y nano curl x11vnc xvfb xinit git python zip xdg-utils firefox python3-tk python3-pexpect fluxbox x11-apps swisswatch man mesa-utils
 
 ###
 # Set up a non-root user account.

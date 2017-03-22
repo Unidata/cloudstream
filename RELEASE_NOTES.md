@@ -8,9 +8,10 @@ See the project GitHub and DockerHub pages for more information:
 * [https://github.com/Unidata/cloudstream](https://github.com/Unidata/cloudstream)
 * [https://hub.docker.com/r/unidata/cloudstream/](https://hub.docker.com/r/unidata/cloudstream)
 
-## 1.2.0 - TBD
+## 1.2.0 - June 21, 2016
 
-* Added a new option, `SSLONLY`, which disables unencrypted http connections. Off by default.
+* Added a new option, `SHARED`, which allows for multiple connections to the same instance. **Off** by default.
+* Added a new option, `SSLONLY`, which disables unencrypted http connections. **Off** by default.
 * Added a `COPYRIGHT` environmental variable; when true, the CloudStream copyright file will be printed to standard output. Additionally, if the environmental variable `COPYRIGHT_FILE` has been set in a downstream image, the file referenced will be sent to standard output as well.
 * `bootstrap.sh` no longer assumes a downstream image will use `README.[txt/md]`; instead, downstream projects must now specify a specific `README` file using the environmental variable `README_FILE`
 * Added a quickstart guide, `QUICKSTART.md`, for users already familiar with Docker.
