@@ -21,7 +21,7 @@ RUN apt-get update && apt-get -y upgrade
 ###
 # Install bare minimum set of tools.
 ###
-RUN apt-get install -y nano curl x11vnc xvfb xinit git python zip xdg-utils firefox python3-tk python3-pexpect fluxbox x11-apps swisswatch man mesa-utils
+RUN apt-get install -y nano curl x11vnc xvfb xinit git python zip xdg-utils firefox python3-tk python3-pexpect fluxbox x11-apps swisswatch man mesa-utils python-numpy
 
 ###
 # Set up a non-root user account.
@@ -78,15 +78,16 @@ ENV APORT 5901
 ENV WPORT 6080
 
 EXPOSE ${WPORT}
-
+EXPOSE ${APORT}
 #RUN git clone git://github.com/kanaka/noVNC
 ##
 # Added an ssl-only option to a fork of noVNC,
 # use the forked version until it is merged into official repo.
 ##
-RUN git clone git://github.com/WardF/noVNC
+#RUN git clone git://github.com/WardF/noVNC
+RUN git clone git://github.com/novnc/noVNC
 RUN ln -s /home/${CUSER}/noVNC/vnc_auto.html /home/${CUSER}/noVNC/index.html
-RUN cd /home/${CUSER}/noVNC/utils && git clone https://github.com/kanaka/websockify
+RUN cd /home/${CUSER}/noVNC/utils && git clone https://github.com/novnc/websockify
 
 
 ###
