@@ -93,7 +93,7 @@ RUN cd /home/${CUSER}/noVNC/utils && git clone https://github.com/kanaka/websock
 # Install rclone from prebuilt binary.
 ###
 USER root
-RUN curl -o rclone.zip http://downloads.rclone.org/rclone-current-linux-amd64.zip && unzip -j -d /usr/bin rclone.zip
+RUN curl -o rclone.zip https://downloads.rclone.org/rclone-v1.36-linux-amd64.zip && unzip -j -d /usr/bin rclone.zip
 USER ${CUSER}
 
 ###
