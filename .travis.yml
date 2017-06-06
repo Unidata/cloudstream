@@ -10,6 +10,5 @@ before_install:
 
 script:
   - docker build -t unidata/cloudstream -f Dockerfile.cloudstream .
-  #- cd examples/Linux\ Desktop/ && docker build -t example/desktop -f Dockerfile.desktop . && cd ../../
-  #- cd examples/CloudIDV/ && docker build -t example/cloudidv -f Dockerfile.cloudidv . && cd ../../
-  #- cd examples/Firefox/ && docker build -t example/firefox -f Dockerfile.firefox . && cd ../../
+  - cd examples/Linux\ Desktop/ && docker build -t example/desktop -f Dockerfile.desktop . && cd ../../
+  - cd examples/Firefox/ && docker build -t example/firefox -f Dockerfile.firefox . && cd ../../
