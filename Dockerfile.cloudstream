@@ -80,7 +80,7 @@ ENV WPORT 6080
 
 EXPOSE ${WPORT}
 
-##RUN git clone git://github.com/kanaka/noVNC
+RUN git clone git://github.com/kanaka/noVNC
 ##
 # Added an ssl-only option to a fork of noVNC,
 # use the forked version until it is merged into official repo.
