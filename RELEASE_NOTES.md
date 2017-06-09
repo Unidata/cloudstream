@@ -8,7 +8,7 @@ See the project GitHub and DockerHub pages for more information:
 * [https://github.com/Unidata/cloudstream](https://github.com/Unidata/cloudstream)
 * [https://hub.docker.com/r/unidata/cloudstream/](https://hub.docker.com/r/unidata/cloudstream)
 
-## 1.2.1 - TBD
+## 1.3.0 - TBD
 
 * Updated to Ubuntu Xenial 16.04
 
