@@ -3,7 +3,7 @@
 # Used to generate the 'unidata/cloudstream' docker container.
 # Visit us on the web at http://www.unidata.ucar.edu
 #
-# Copyright Unidata 2015 - 2016
+# Copyright Unidata 2015 - 2017
 #
 #####
 
@@ -85,7 +85,7 @@ RUN git clone git://github.com/kanaka/noVNC
 # Added an ssl-only option to a fork of noVNC,
 # use the forked version until it is merged into official repo.
 ##
-RUN ln -s /home/${CUSER}/noVNC/vnc_auto.html /home/${CUSER}/noVNC/index.html
+RUN ln -s /home/${CUSER}/noVNC/vnc.html /home/${CUSER}/noVNC/index.html
 RUN cd /home/${CUSER}/noVNC/utils && git clone https://github.com/kanaka/websockify
 
 
