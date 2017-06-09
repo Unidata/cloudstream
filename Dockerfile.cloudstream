@@ -22,7 +22,7 @@ RUN apt-get update && apt-get -y upgrade
 # Install bare minimum set of tools.
 ###
 
-RUN apt-get install -y nano curl x11vnc xvfb xinit git python zip xdg-utils firefox python3-tk python3-pexpect fluxbox x11-apps swisswatch man mesa-utils sudo
+RUN apt-get install -y nano curl x11vnc xvfb xinit git python zip xdg-utils firefox python3-tk python3-pexpect fluxbox x11-apps swisswatch man mesa-utils sudo bzip2
 
 ###
 # Set up a non-root user account.
