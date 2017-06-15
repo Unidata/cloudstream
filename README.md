@@ -56,13 +56,19 @@ To run this custom Docker image, you would run the following from the command li
 
 Your Docker image would then be viewable by entering the following address in a web browser:
 
-    [IP address of the machine running the image]:6080
+    http://[IP address of the machine running the image]:6080
 
 
 Usage<A NAME="usage"></A>
 -----
 
 **CloudStream** has several options built-in, enumerated below.  These options are inherited by any CloudStream-based Docker images, although these options may be removed or have their default values changed by a developer.  Additionally, it is easy for a developer to add additional options for use in their CloudStream-based image. The variables and their syntax are described below.
+
+### Using cut-and-paste
+
+![image](docs/cloudstream_splash.png)
+![image](docs/cloudstream_connected.png)
+![image](docs/cloudstream_clipboard1.png)
 
 ###Options
 

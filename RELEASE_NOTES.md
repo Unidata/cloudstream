@@ -8,8 +8,10 @@ See the project GitHub and DockerHub pages for more information:
 * [https://github.com/Unidata/cloudstream](https://github.com/Unidata/cloudstream)
 * [https://hub.docker.com/r/unidata/cloudstream/](https://hub.docker.com/r/unidata/cloudstream)
 
-## 1.3.0 - TBD
+## 1.3.0 - June 15, 2017
 
+* Enabled `noVNC`-provided shared clipboard.
+* Taking advantage of nicer interface provided by `noVNC`.
 * Updated to Ubuntu Xenial 16.04
 
 ## 1.2.0 - June 21, 2016
