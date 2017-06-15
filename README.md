@@ -81,7 +81,7 @@ Highlighting text in the CloudStream application will cause it to be copied into
 
 ![image](docs/cloudstream_clipboard2.png)
 
-###Options
+### Options
 
 
 **CloudStream** has several options built-in, enumerated below.  These options are inherited by any CloudStream-based Docker images, although these options may be removed or have their default values changed by a developer.  Additionally, it is easy for a developer to add additional options for use in their CloudStream-based image. The variables and their syntax are described below.
