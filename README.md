@@ -62,17 +62,31 @@ Your Docker image would then be viewable by entering the following address in a 
 Usage<A NAME="usage"></A>
 -----
 
-**CloudStream** has several options built-in, enumerated below.  These options are inherited by any CloudStream-based Docker images, although these options may be removed or have their default values changed by a developer.  Additionally, it is easy for a developer to add additional options for use in their CloudStream-based image. The variables and their syntax are described below.
+### Connecting
+
+CloudStream instances are typically accessed via a web browser.  Clicking the `connect` button will take you into your cloud-enabled application.  
+
+![image](docs/cloudstream_splash.png)
 
 ### Using cut-and-paste
 
-![image](docs/cloudstream_splash.png)
+The clipboard is controlled using the panel on the left side of the browser window, and is represented by the third icon from the top. Text pasted into the `Clipboard` panel will be copied to the CloudStream clipboard, and can be pasted in the browser window via the **Middle Mouse Button**.
 ![image](docs/cloudstream_connected.png)
+
+Text pasted into the `Clipboard` panel will be copied to the CloudStream clipboard, and can be pasted in the browser window via the **Middle Mouse Button**.   
+
 ![image](docs/cloudstream_clipboard1.png)
 
+Highlighting text in the CloudStream application will cause it to be copied into the `Clipboard` panel, allowing it to be copied-and-pasted back to your local computer.
+
+![image](docs/cloudstream_clipboard2.png)
 ###Options
 
+
+**CloudStream** has several options built-in, enumerated below.  These options are inherited by any CloudStream-based Docker images, although these options may be removed or have their default values changed by a developer.  Additionally, it is easy for a developer to add additional options for use in their CloudStream-based image. The variables and their syntax are described below.
+
 Below are the options available for use with `unidata/cloudstream`.  They are organized into three groups, `Information Options`, `Security Options` and `Display Options`.
+
 
 #### Information Options <A NAME="infooptions"></A>
 
