@@ -80,6 +80,7 @@ Text pasted into the `Clipboard` panel will be copied to the CloudStream clipboa
 Highlighting text in the CloudStream application will cause it to be copied into the `Clipboard` panel, allowing it to be copied-and-pasted back to your local computer.
 
 ![image](docs/cloudstream_clipboard2.png)
+
 ###Options
 
 
