@@ -1,7 +1,7 @@
 CloudStream
 ===========
 
-* [Travis-CI Dashboard](https://travis-ci.org/Unidata/cloudstream):  <IMG SRC="https://travis-ci.org/Unidata/cloudstream.svg?branch=master"/>
+* [Travis-CI Dashboard](https://travis-ci.org/Unidata/cloudstream):  <IMG SRC="https://travis-ci.org/Unidata/cloudstream.svg?branch=master"/>  <IMG SRC="https://img.shields.io/docker/pulls/unidata/cloudstream.svg"/>
 
 Table of contents
 -----------------
@@ -40,11 +40,35 @@ How do you define a project which inherits from `unidata/cloudstream`? With a cu
 
 ### Docker configuration files
 
-Docker images are built using configuration files referred to as a `Dockerfile`.  Examples of various types of Dockerfiles may be found in the `examples/` directory, and a robust Dockerfile template is also included in the project.  An annotated Docker configuration template, `Dockerfile.template`, may be found as part of the CloudStream project.  It is also directly viewable [here](https://github.com/Unidata/cloudstream/blob/master/Dockerfile.template).  This template is designed to serve as a starting point for building your own Docker image.
+Docker images are built using configuration files referred to as a `Dockerfile`.  Examples of various types of Dockerfiles may be found in the `examples/` directory, and a robust, annotated Dockerfile template for Ubuntu/Debian systems is also included in the CloudStream project (`Dockerfile.template`).  It is also directly viewable [here](https://github.com/Unidata/cloudstream/blob/master/Dockerfile.template).  This template is designed to serve as a starting point for building your own Docker image.
 
 The Docker organization also provides documentation for building and configuring your own Dockerfile.  This documentation may be found [at their website](https://docs.docker.com/engine/reference/builder/).
 
 ### Building your own Docker image
+
+In order to stream your GUI application through a web browser, you must build a Docker container *on top of* and existing `unidata/cloudstream` image. 
+
+#### Ubuntu/Debian Dockerfile
+
+A new Docker application based on `unidata/cloudstream:latest` (Ubuntu) begins as 
+
+    FROM unidata/cloudstream:latest
+    USER root
+    # Run in non-interactive mode
+    ENV DEBIAN_FRONTEND noninteractive
+    # Run any command here...
+    COPY start.sh ${HOME}/
+
+#### CentOS 7 Dockerfile
+
+A new Docker application based on `unidata/cloudstream:centos7` begins as 
+
+    FROM unidata/cloudstream:centos7
+    ENV APPLICATION_VERSION 1.0.0
+    # Run any command here...
+    COPY start.sh ${HOME}/
+    
+The file `start.sh` will be run by `bootstrap.sh` to execute your own application, and must be present in `${HOME}` (`/home/stream`).
 
 Once a custom Dockerfile has been configured, building your project is as simple as:
 
@@ -150,4 +174,6 @@ For more information on Docker syntax and using CloudStream as a basis for other
 
 * Unidata CloudStream project page: [https://github.com/Unidata/cloudstream/](https://github.com/Unidata/cloudstream)
 * Unidata CloudIDV project page:  [https://github.com/Unidata/cloudidv/](https://github.com/Unidata/cloudidv)
+* Unidata CloudAWIPS project page:  [https://github.com/Unidata/CloudAWIPS/](https://github.com/Unidata/CloudAWIPS)
+* Unidata CloudGEMPAK project page:  [https://github.com/Unidata/CloudGEMPAK/](https://github.com/Unidata/CloudGEMPAK)
 * Dockerfile Syntax: [https://docs.docker.com/engine/reference/builder/](https://docs.docker.com/engine/reference/builder)
