@@ -81,11 +81,11 @@ ENV WPORT 6080
 EXPOSE ${WPORT}
 
 RUN git clone git://github.com/kanaka/noVNC
+RUN cp /home/${CUSER}/noVNC/vnc_lite.html /home/${CUSER}/noVNC/index.html
 ##
 # Added an ssl-only option to a fork of noVNC,
 # use the forked version until it is merged into official repo.
 ##
-RUN ln -s /home/${CUSER}/noVNC/vnc.html /home/${CUSER}/noVNC/index.html
 RUN cd /home/${CUSER}/noVNC/utils && git clone https://github.com/kanaka/websockify
 
 
@@ -93,7 +93,7 @@ RUN cd /home/${CUSER}/noVNC/utils && git clone https://github.com/kanaka/websock
 # Install rclone from prebuilt binary.
 ###
 USER root
-RUN curl -o rclone.zip https://downloads.rclone.org/rclone-v1.36-linux-amd64.zip && unzip -j -d /usr/bin rclone.zip
+RUN curl -O https://downloads.rclone.org/rclone-current-linux-amd64.zip && unzip -j -d /usr/bin rclone-current-linux-amd64.zip
 USER ${CUSER}
 
 ###
@@ -116,6 +116,7 @@ ENV SHARESTRING --noshared
 ###
 # Copy over a few files.
 ###
+COPY start.sh ${HOME}/
 COPY bootstrap.sh ${HOME}/
 COPY Dockerfile.cloudstream ${HOME}/
 COPY Dockerfile.template ${HOME}/
@@ -131,7 +132,7 @@ ADD examples ${HOME}/examples
 # Create a version file.
 ###
 ENV VERSION_FILE VERSION.md
-RUN echo "CloudStream Version: \"$CLOUDSTREAM_VERSION\"\t$(date)" > $VERSION_FILE
+RUN echo "CloudStream Version: "$CLOUDSTREAM_VERSION" $(date)" > $VERSION_FILE
 
 ###
 # A little housekeeping.
