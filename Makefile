@@ -29,4 +29,4 @@ firefox:
 desktop:
 	docker build -t example/desktop:latest -f examples/Linux\ Desktop/Dockerfile.desktop examples/Linux\ Desktop/
 
-.PHONY: build firefox desktop
+.PHONY: ubuntu centos firefox desktop
