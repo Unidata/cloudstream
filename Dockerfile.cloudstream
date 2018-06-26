@@ -3,11 +3,11 @@
 # Used to generate the 'unidata/cloudstream' docker container.
 # Visit us on the web at http://www.unidata.ucar.edu
 #
-# Copyright Unidata 2015 - 2017
+# Copyright Unidata 2015 - 2018
 #
 #####
 
-FROM ubuntu:xenial
+FROM ubuntu:bionic
 MAINTAINER Ward Fisher <wfisher@ucar.edu>
 ENV CLOUDSTREAM_VERSION development
 
