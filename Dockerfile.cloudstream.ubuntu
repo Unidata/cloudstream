@@ -104,8 +104,8 @@ USER ${CUSER}
 #                       -it [docker image] bootstrap.sh
 ###
 
-ENV SIZEW 1024
-ENV SIZEH 768
+ENV SIZEW 1680
+ENV SIZEH 1050
 ENV CDEPTH 24
 
 ###
@@ -118,7 +118,7 @@ ENV SHARESTRING --noshared
 ###
 COPY start.sh ${HOME}/
 COPY bootstrap.sh ${HOME}/
-COPY Dockerfile.cloudstream ${HOME}/
+COPY Dockerfile.cloudstream.ubuntu ${HOME}/
 COPY Dockerfile.template ${HOME}/
 COPY README.md ${HOME}/
 COPY COPYRIGHT_CLOUDSTREAM.md ${HOME}/
