@@ -10,7 +10,7 @@ before_install:
   - docker pull centos:7 > /dev/null
 
 script:
-  - docker build -t unidata/cloudstream -f Dockerfile.cloudstream .
+  - docker build -t unidata/cloudstream -f Dockerfile.cloudstream.ubuntu .
   #- docker build -t unidata/cloudstream:centos7 -f Dockerfile.cloudstream.centos7 .
   #- docker build -t example/desktop -f examples/Linux\ Desktop/Dockerfile.desktop examples/Linux\ Desktop/
   #- docker build -t example/firefox -f examples/Firefox/Dockerfile.firefox ./examples/Firefox/
