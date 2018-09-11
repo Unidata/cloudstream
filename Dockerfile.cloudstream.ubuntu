@@ -11,6 +11,9 @@ FROM ubuntu:bionic
 MAINTAINER Ward Fisher <wfisher@ucar.edu>
 ENV CLOUDSTREAM_VERSION development
 
+# Set the following, required for IDV 5.5+
+ENV MESA_GL_VERSION_OVERRIDE 3.1
+
 #####
 # Update base docker image.
 #####
