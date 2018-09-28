@@ -7,12 +7,12 @@
 #
 #####
 
-FROM ubuntu:bionic
+FROM ubuntu:trusty
 MAINTAINER Ward Fisher <wfisher@ucar.edu>
 ENV CLOUDSTREAM_VERSION development
 
 # Set the following, required for IDV 5.5+
-ENV MESA_GL_VERSION_OVERRIDE 3.1
+# ENV MESA_GL_VERSION_OVERRIDE 3.1
 
 #####
 # Update base docker image.
@@ -84,7 +84,8 @@ ENV WPORT 6080
 EXPOSE ${WPORT}
 
 RUN git clone git://github.com/kanaka/noVNC
-RUN cp /home/${CUSER}/noVNC/vnc_lite.html /home/${CUSER}/noVNC/index.html
+RUN cp /home/${CUSER}/noVNC/vnc.html /home/${CUSER}/noVNC/index.html
+
 ##
 # Added an ssl-only option to a fork of noVNC,
 # use the forked version until it is merged into official repo.
